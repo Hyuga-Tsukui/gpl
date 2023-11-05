@@ -81,5 +81,17 @@ func SearchIssues(terms []string) (*IssueSearchResult, *IssueSearchResult, *Issu
 		TotalCount: len(long),
 		Items:      long,
 	}
+	fmt.Printf("----- Less than one month -----\n")
+	printItems(short)
+	fmt.Printf("----- Less than one year -----\n")
+	printItems(medium)
+	fmt.Printf("----- More than one year -----\n")
+	printItems(long)
 	return shortResult, mediumResult, longResult, nil
+}
+
+func printItems(issues []Issue) {
+	for _, i := range issues {
+		fmt.Printf("#%-5d %9.9s %.55s\n", i.Number, i.User.Login, i.Title)
+	}
 }
