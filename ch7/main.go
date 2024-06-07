@@ -22,13 +22,13 @@ func main() {
 
 	fmt.Println(w)
 
-    fmt.Println("-------7.1")
+	fmt.Println("-------7.1")
 
-    cw, c := CountingWriter(&w)
+	cw, c := CountingWriter(&w)
 
-    fmt.Fprintf(cw, "piyo")
-    fmt.Println(*c)
-    fmt.Println(w)
+	fmt.Fprintf(cw, "piyo")
+	fmt.Println(*c)
+	fmt.Println(w)
 }
 
 type WordCounter int
@@ -45,19 +45,19 @@ func (c *WordCounter) Write(p []byte) (int, error) {
 
 func CountingWriter(w io.Writer) (io.Writer, *int64) {
 	var b int64
-    
-    return &WrapWriter{
-        Writer: w,
-        Counter: &b,
-    }, &b
+
+	return &WrapWriter{
+		Writer:  w,
+		Counter: &b,
+	}, &b
 }
 
 type WrapWriter struct {
-    Writer io.Writer
-    Counter *int64
+	Writer  io.Writer
+	Counter *int64
 }
 
 func (w *WrapWriter) Write(p []byte) (int, error) {
-    *w.Counter += int64(len(p))
-    return w.Writer.Write(p)
+	*w.Counter += int64(len(p))
+	return w.Writer.Write(p)
 }
