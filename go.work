@@ -4,5 +4,12 @@ use (
 	.
 	./ch5
 	./ch6
+    ./ch7
 	./ch7/ex8
+	./ch7/ex9
+    ./ch8/spinner
+    ./ch8/clock1
+    ./ch8/clock2
+    ./ch8/netcat1
+    ./ch8/ex1
 )
